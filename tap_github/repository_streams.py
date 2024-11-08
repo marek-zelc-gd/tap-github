@@ -2035,6 +2035,13 @@ class WorkflowRunsStream(GitHubRestStream):
             "repo_id": context["repo_id"] if context else None,
         }
 
+    def get_url_params(
+            self, context: dict | None, next_page_token: Any | None
+    ) -> dict[str, Any]:
+        params = super().get_url_params(context, next_page_token)
+        params["created"] = ">2024-09-01"
+        return params
+
 
 class WorkflowRunJobsStream(GitHubRestStream):
     """Defines 'workflow_run_jobs' stream."""
