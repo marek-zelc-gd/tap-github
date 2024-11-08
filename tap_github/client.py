@@ -78,6 +78,8 @@ class GitHubRestStream(RESTStream):
             return None
 
         resp_json = response.json()
+        if not isinstance(resp_json, list) and resp_json.get("workflow_runs") is not None:
+            resp_json = resp_json.get("workflow_runs")
         results = resp_json if isinstance(resp_json, list) else resp_json.get("items")
 
         # Exit early if the response has no items. ? Maybe duplicative the "next" link check.  # noqa: E501
