@@ -1977,6 +1977,7 @@ class WorkflowRunsStream(GitHubRestStream):
     ignore_parent_replication_key = False
     state_partitioning_keys: ClassVar[list[str]] = ["repo", "org"]
     records_jsonpath = "$.workflow_runs[*]"
+    use_fake_since_parameter = True
 
     schema = th.PropertiesList(
         # Parent keys
