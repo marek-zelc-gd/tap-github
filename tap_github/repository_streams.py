@@ -2039,7 +2039,7 @@ class WorkflowRunsStream(GitHubRestStream):
             self, context: dict | None, next_page_token: Any | None
     ) -> dict[str, Any]:
         params = super().get_url_params(context, next_page_token)
-        params["created"] = ">2024-11-01"
+        params["created"] = ">2024-11-22"
         return params
 
 
