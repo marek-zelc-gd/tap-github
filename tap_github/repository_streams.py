@@ -2039,6 +2039,10 @@ class WorkflowRunsStream(GitHubRestStream):
             self, context: dict | None, next_page_token: Any | None
     ) -> dict[str, Any]:
         params = super().get_url_params(context, next_page_token)
+        d = self.get_starting_timestamp(context)
+        x = self.get_starting_timestamp(context)
+        if x:
+            self.logger.warning('DDDDDDDDDD '+ x.strftime("%Y-%m-%d"))
         params["created"] = ">2024-11-20"
         return params
 
